@@ -1,0 +1,10 @@
+<% layout('layouts/boilerplate.ejs') %>
+<div> <% for (let restaurant of restaurants) { %>
+    <div class="border-bottom">
+        <h3><%= restaurant.alias %></h3>
+        <h3><%= restaurant.name %></h3>
+        <h3><%= restaurant.image %></h3>
+        <img src="<%= restaurant.image %>" alt="error">
+    </div>
+    <% } %>
+ </div>

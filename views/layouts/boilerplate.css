@@ -1,0 +1,12 @@
+.body {
+    font-family: 'Rubik', sans-serif;
+    background-color: black;
+}
+
+.scroll {
+    display: flex;
+    overflow: scroll;
+    height: 70px;
+    position: relative;
+    width: 100%;
+}
