@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-
 const Restaurant = require('../models/restaurants');
-
+const yelp = require('yelp-fusion');
 
 mongoose.connect('mongodb://localhost:27017/restaurants');
 
@@ -11,12 +10,10 @@ db.once("open", () => {
     console.log('Database Connected')
 });
 
-const yelp = require('yelp-fusion');
-
 const apiKey = 'RdIL_KG-iIeNMFev3vZmh2PicEf3Lwy7E1PMFxlYA5iFVSuW8g99jb8B1mD7pk0qijTZkEfomAYPRukhT7p7cGmguRatNEPXFvMg49oJ0sSDSeMRyfkra705RuUnYXYx';
 
 const searchRequest = {
-  term:'restaurants',
+  term:'Restaurants',
   location: 'Tennessee'
 };
 
@@ -24,19 +21,20 @@ const client = yelp.client(apiKey);
 
 client.search(searchRequest).then(response => {
   const res = response.jsonBody.businesses;
-  const prettyJson = JSON.stringify(res, null, 4);
   const seedDB = async () => {
     await Restaurant.deleteMany({});
-    for (let i = 0; i < 20; i++) {
-      console.log(res)
+    for (let i = 0; i < 40; i++) {
+      console.log(res[i])
       const restaurant = new Restaurant({
         alias: res[i].alias,
         name: res[i].name,
         url: res[i].url,
         image: res[i].image_url,
-        categories: res[i].categories,
         location: res[i].location,
-        coordinates: res[i].coordinates,
+        geometry: {
+          type: 'Point',
+          coordinates: [res[i].coordinates.longitude, res[i].coordinates.latitude]
+        },
         closed: res[i].is_closed,
         rating: res[i].rating,
         ratingCount: res[i].ratingCount

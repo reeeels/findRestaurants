@@ -1,10 +1,31 @@
 <% layout('layouts/boilerplate.ejs') %>
-<div> <% for (let restaurant of restaurants) { %>
-    <div class="border-bottom">
-        <h3><%= restaurant.alias %></h3>
-        <h3><%= restaurant.name %></h3>
-        <h3><%= restaurant.image %></h3>
-        <img src="<%= restaurant.image %>" alt="error">
+<div class="col-6">
+    <h1>Recommended</h1>
+    <div style="display: flex; overflow: scroll; height: 100vh; position: relative; width: 100%; overflow-y: scroll;" class="scroll ml-2 mr-2">
+        <div> <% for (let restaurant of restaurants) { %>
+            <div class="border-bottom">
+                <h3><%= restaurant.alias %></h3>
+                <h3><%= restaurant.name %></h3>
+                <h3><%= restaurant.image %></h3>
+                <img src="<%= restaurant.image %>" alt="error">
+            </div>
+            <% } %>
+         </div>
     </div>
-    <% } %>
- </div>
+</div>
+<div class="col-4 border-start border-grey">
+    <div class="mb-5">
+        <h1>Map</h1>
+        <div id="map"></div>
+    </div>
+
+    <div class="w-100 d-none d-md-block"></div>
+
+    <div class="col-6"><h3>blah blah</h3></div>
+</div>
+
+ <script>
+    const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+    const restaurants = { features: <%- JSON.stringify(restaurants) %>}
+</script>
+<script src="\javascripts\clusterMap.js"></script>

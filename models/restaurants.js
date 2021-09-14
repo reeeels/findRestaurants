@@ -8,9 +8,16 @@ const RestaurantSchema = new Schema({
     name: String,
     url: String,
     image: String,
-    categories: [],
     location: [],
-    coordinates: {},
+    geometry: {
+        type: {
+            type: String,
+            enum: ['Point'],
+        },
+        coordinates: {
+            type: [Number],
+        }
+    },
     closed: Boolean,
     rating: Number,
     ratingCount: Number,

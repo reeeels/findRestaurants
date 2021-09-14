@@ -12,13 +12,23 @@
     <title>Document</title>
 </head>
 <body style="font-family: 'Rubik', sans-serif; width: 100%; height: 100%;" class="body">
-    <div class="container mt-3">
-        <h1 class="mb-3">Explore</span></h1>
+    <%-include('./partials/navbar')%>
+    <div class="container">
         <div class="row">
             <div class="col-2 border-end border-grey"><%-include('./partials/sidebar')%></div>
-            <div class="col-10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis animi eaque veniam totam maiores necessitatibus? Molestiae numquam reiciendis officia, fuga ducimus tenetur sunt fugiat at soluta expedita, distinctio vel! Et?</div>
+            <div class="col-10">
+                <h1 class="mb-3">Explore</span></h1>
+                <div style="display: flex; overflow: scroll; height: 100vh; position: relative; width: 100%; overflow-y: scroll;">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis animi eaque veniam totam maiores necessitatibus? Molestiae numquam reiciendis officia, fuga ducimus tenetur sunt fugiat at soluta expedita, distinctio vel! Et? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus laborum ea architecto et rem corrupti officiis placeat, veritatis ducimus fuga eaque exercitationem id sint harum temporibus ut unde excepturi repudiandae? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa dolorem doloribus fugit illo nesciunt tempora, ad cum omnis veniam nostrum hic itaque obcaecati, quam voluptatum tempore, molestias ipsam sapiente ut?
+                </div>
+            </div>
         </div>
     </div>
+    <footer class="text-center py-2 mt-0">
+        <div class="container text-center">
+            <span class="text-muted">&copy; findRestaurants</span>
+        </div>
+    </footer>
 </body>
 </html>
 

@@ -2,6 +2,9 @@ const express = require("express");
 const ejsMate = require("ejs-mate");
 const expressError = require('./utils/expressError');
 const mongoose = require('mongoose');
+const path = require('path');
+const methodOverride = require('method-override');
+const morgan = require('morgan');
 
 const Restaurant = require('./models/restaurants');
 
@@ -16,9 +19,13 @@ db.once("open", () => {
 
 
 const app = express();
-
-
-app.engine('ejs', ejsMate)
+app.engine('ejs', ejsMate);
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
+app.use(morgan('dev'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get('/', (req, res) => {
