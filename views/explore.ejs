@@ -9,6 +9,32 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="public\stylesheets\boilerplate.css">
+    <style>
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-template-rows: repeat(8, 5vw);
+            grid-gap: 15px;
+        }
+        .gallery__img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .gallery__item--1 {
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 1;
+            grid-row-end: 3;
+        }
+        .gallery__item--2 {
+            grid-column-start: 3;
+            grid-column-end: 5;
+            grid-row-start: 1;
+            grid-row-end: 3;
+        }
+    </style>
     <title>Document</title>
 </head>
 <body style="font-family: 'Rubik', sans-serif; width: 100%; height: 100%;" class="body">
@@ -18,8 +44,15 @@
             <div class="col-2 border-end border-grey"><%-include('./partials/sidebar')%></div>
             <div class="col-10">
                 <h1 class="mb-3">Explore</span></h1>
-                <div style="display: flex; overflow: scroll; height: 100vh; position: relative; width: 100%; overflow-y: scroll;">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis animi eaque veniam totam maiores necessitatibus? Molestiae numquam reiciendis officia, fuga ducimus tenetur sunt fugiat at soluta expedita, distinctio vel! Et? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus laborum ea architecto et rem corrupti officiis placeat, veritatis ducimus fuga eaque exercitationem id sint harum temporibus ut unde excepturi repudiandae? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa dolorem doloribus fugit illo nesciunt tempora, ad cum omnis veniam nostrum hic itaque obcaecati, quam voluptatum tempore, molestias ipsam sapiente ut?
+                <div class="gallery" style="display: flex; overflow: scroll; height: 100vh; position: relative; width: 100%; overflow-y: scroll;">
+                    <% var count = 1; %>
+                    <div> <% for (let restaurant of restaurants) { %>
+                        <figure class=<%= `gallery__item gallery__item--${count}`%>>
+                            <img src=<%= restaurant.image %> class="gallery__img">
+                        </figure>
+                        <% count = count + 1; %>
+                        <% } %>
+                    </div>
                 </div>
             </div>
         </div>

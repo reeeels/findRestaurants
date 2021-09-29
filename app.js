@@ -38,8 +38,26 @@ app.get('/home', async (req, res) => {
     res.render('home.ejs', { restaurants });
 });
 
-app.get('/explore', (req, res) => {
-    res.render('explore.ejs');
+app.get('/explore', async (req, res) => {
+    const restaurants = await Restaurant.find({});
+    console.log(restaurants)
+    res.render('explore.ejs', { restaurants });
+});
+
+app.get('/login', async (req, res) => {
+    res.render('login.ejs');
+});
+
+app.get('/signup', async (req, res) => {
+    res.render('signup.ejs');
+});
+
+app.post('/login', async (req, res) => {
+    res.send('logged in');
+});
+
+app.post('/signup', async (req, res) => {
+    res.send('signed up');
 });
 
 app.get('/profile/:id', (req, res) => {
