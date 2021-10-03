@@ -1,47 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="public\stylesheets\boilerplate.css">
-    <style>
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(8, 1fr);
-            grid-template-rows: repeat(8, 5vw);
-            grid-gap: 15px;
-        }
-        .gallery__img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .gallery__item--1 {
-            grid-column-start: 1;
-            grid-column-end: 3;
-            grid-row-start: 1;
-            grid-row-end: 3;
-        }
-        .gallery__item--2 {
-            grid-column-start: 3;
-            grid-column-end: 5;
-            grid-row-start: 1;
-            grid-row-end: 3;
-        }
-    </style>
-    <title>Document</title>
-</head>
-<body style="font-family: 'Rubik', sans-serif; width: 100%; height: 100%;" class="body">
-    <%-include('./partials/navbar')%>
-    <div class="container">
-        <div class="row">
-            <div class="col-2 border-end border-grey"><%-include('./partials/sidebar')%></div>
+<% layout('layouts/boilerplate.ejs') %>
             <div class="col-10">
                 <h1 class="mb-3">Explore</span></h1>
                 <div class="gallery" style="display: flex; overflow: scroll; height: 100vh; position: relative; width: 100%; overflow-y: scroll;">
@@ -55,13 +12,4 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <footer class="text-center py-2 mt-0">
-        <div class="container text-center">
-            <span class="text-muted">&copy; findRestaurants</span>
-        </div>
-    </footer>
-</body>
-</html>
 

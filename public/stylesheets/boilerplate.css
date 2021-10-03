@@ -1,14 +1,82 @@
 .body {
     font-family: 'Rubik', sans-serif;
-    width: 100%; 
-    height: 100%;
+    overflow: hidden
 }
 
 .scroll::-webkit-scrollbar {
     display: none;
 }
 
+.modal{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    display: none;
+}
+
+.modal.fade .modal.dialog {
+    -webkit-transform: translate(0, -25%);
+    -ms-transform: translate(0, -25%);
+    transform: translate(0, -25%);
+    -webkit-transition: -webkit-transform 0.3s ease-out;
+    -moz-transition: -moz-transform 0.3s ease-out;
+    -o-transition: -o-transform 0.3s ease-out;
+    transition: transform 0.3s ease-out;;
+}
+
 #map {
     width: 100%;
     height: 200px;
 }
+
+.navbar-toggler{
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+li a {
+    display: block;
+    width: 70px;
+  }
+
+  blockquote.twitter-tweet {
+    display: inline-block;
+    font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 16px;
+    border-color: #eee #ddd #bbb;
+    border-radius: 5px;
+    max-width: 468px;
+  }
+  
+  blockquote.twitter-tweet p {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 20px;
+  }
+  
+  blockquote.twitter-tweet a {
+    color: inherit;
+    font-weight: normal;
+    text-decoration: none;
+    outline: 0 none;
+  }
+  
+  blockquote.twitter-tweet a:hover,
+  blockquote.twitter-tweet a:focus {
+    text-decoration: underline;
+  }
+
+.hover {
+    transition: 200ms;
+    background-color: rgb(247, 247, 247);
+}
+
+.hover:hover {
+    background-color: #eeee;
+}
+  

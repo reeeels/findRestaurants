@@ -1,31 +1,120 @@
 <% layout('layouts/boilerplate.ejs') %>
-<div class="col-6">
-    <h1>Recommended</h1>
-    <div style="display: flex; overflow: scroll; height: 100vh; position: relative; width: 100%; overflow-y: scroll;" class="scroll ml-2 mr-2">
-        <div> <% for (let restaurant of restaurants) { %>
-            <div class="border-bottom">
-                <h3><%= restaurant.alias %></h3>
-                <h3><%= restaurant.name %></h3>
-                <h3><%= restaurant.image %></h3>
-                <img src="<%= restaurant.image %>" alt="error">
-            </div>
+<div class="col-lg-7 col-xs-10 pl-5 pr-5 scroll mt-0 border-left border-grey" style="position: relative; overflow-y: auto;">
+    <h1 class="mt-3">Map <span><i class="fa fa-map-marked"></i></span></h1>
+    <div class="mb-3" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; padding: 5px; height: 360px;">
+        <div id="map" class="border border-light" style="height: 100%;"></div>
+    </div>
+
+    <!-- <div class="w-100 d-none d-md-block"></div> -->
+    <!-- <blockquote style="box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; padding: 5px; height: 350px;" class="twitter-tweet"><p lang="en" dir="ltr">Nashville is about to get a whole lot more exciting! Check out these highly anticipated restaurant openings for Fall 2021. 😍 <a href="https://t.co/v4BIGYyZVp">https://t.co/v4BIGYyZVp</a></p>&mdash; Nashville Tennessee (@visitmusiccity) <a href="https://twitter.com/visitmusiccity/status/1442927255894691842?ref_src=twsrc%5Etfw">September 28, 2021</a></blockquote> -->
+</div>
+
+<div class="col-lg-4 pl-3">
+    <h1 class="mb-0 ml-1">Recommended</h1>
+    <div style="height: 100vh; position: relative; width: 100%; overflow-y: auto;" class="scroll ml-2 mr-2">
+        <div class="mt-0">
+            <% for (let restaurant of restaurants) { %>
+                <% if (restaurant.rating > 4) { %>
+                    <hr class="mt-1">
+                    <div class="ml-1 mb-3 px-3 pb-3 pt-1 hover" style="width: 98%; word-wrap: break-word;">
+                        <h2 class="mb-1 is-size-2"><a href="<%= restaurant.url %>"><span style="color: black;text-decoration-line: none;"><%= restaurant.name %></span> <span><i class="fa fa-external-link-square-alt"></i></span></a></h2>
+                        <h3 class="is-size-5 mt-0"><%= restaurant.alias %></h3>
+                        <% let ceiledRating = parseInt(Math.ceil(restaurant.rating))%>
+                        <h3 class="is-size-4 mt-3 mb-3 text-right">Rated: 
+                        <% for (let i = 0; i < ceiledRating; i++) { %>
+                            <% if ((i === ceiledRating-1) && (ceiledRating - restaurant.rating != 0)) { %>
+                            <span style="color: gold;"><i class="fa fa-star-half-alt"></i></span>
+                            <% break; %>
+                            <% } %>
+                             <span style="color: gold;"><i class="fa fa-star"></i></span>     
+                        <% } %>
+                        </h3>
+                        <img src="<%= restaurant.image %>" class="rounded-5 ml-2 pr-1" style="border-radius: 7%;" alt="error">
+                    </div>
+                <% } %>
             <% } %>
          </div>
     </div>
 </div>
-<div class="col-4 border-start border-grey">
-    <div class="mb-5">
-        <h1>Map</h1>
-        <div id="map"></div>
+
+<div class="modal fade scroll" id="staticBackdrop" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title" id="staticBackdropLabel">Login</h1>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="justify-content-center align-items-center mt-3">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <form class='needs-Validation' action="/login" method='POST' novalidate>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="username">Username</label>
+                                        <input class="form-control" type="text" id="username" name="username" autofocus
+                                            required>
+                                    </div>
+        
+                                    <div class="mb-3">
+                                        <label class="form-label" for="password">Password</label>
+                                        <input class="form-control" type="password" id="password" name="password" required>
+                                    </div>
+                                    <button class="btn btn-success">Login</button>
+                                </form>
+                            </div>
+                        </div>
+            </div>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <div class="w-100 d-none d-md-block"></div>
-
-    <div class="col-6"><h3>blah blah</h3></div>
+<div class="modal fade scroll" id="signupBackdrop" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title" id="signupBackdropLabel">Signup</h1>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="justify-content-center align-items-center mt-3">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <form class='needs-Validation' action="/signup" method='POST' novalidate>
+                                    <div class="mb-1">
+                                        <label class="form-label" for="username">Username</label>
+                                        <input class="form-control" type="text" id="username" name="username" autofocus
+                                            required>
+                                    </div>
+        
+                                    <div class="mb-1">
+                                        <label class="form-label" for="email">Email</label>
+                                        <input class="form-control" type="email" name="email" id="email" required>
+                                        <div class="valid-feedback">Looks Good</div>
+                                    </div>
+        
+                                    <div class="mb-3">
+                                        <label class="form-label" for="password">Password</label>
+                                        <input class="form-control" type="password" id="password" name="password" required>
+                                    </div>
+                                    <button class="btn btn-success btn-block">Sign Up</button>
+                                </form>
+                            </div>
+                        </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
  <script>
     const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
-    const restaurants = { features: <%- JSON.stringify(restaurants) %>}
+    const restaurants = { features: <%- JSON.stringify(restaurants) %>};
 </script>
 <script src="\javascripts\clusterMap.js"></script>

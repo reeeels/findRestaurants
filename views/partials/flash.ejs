@@ -1,0 +1,15 @@
+<% if (success && success.length) {%>
+    <div class="container mt-4">
+        <div class="title text-center" >
+            <h2><%= success %></h2>
+        </div>
+    </div>
+<% } %>
+
+<% if (error && error.length) {%>
+    <div class="container mt-4"></div>
+        <div class="title text-center">
+            <h2><%= error %></h2>
+        </div>
+    </div>
+<% } %>
