@@ -3,6 +3,15 @@
     overflow: hidden
 }
 
+html[data-theme='dark'] {
+    background: #000;
+    filter: invert(1) hue-rotate(180deg)
+}
+
+html[data-theme='dark'] img, .fa-star-half-alt, .fa-star, .modal {
+  filter: invert(1) hue-rotate(180deg)
+}
+
 .scroll::-webkit-scrollbar {
     display: none;
 }
@@ -73,7 +82,7 @@ li a {
 
 .hover {
     transition: 200ms;
-    background-color: rgb(247, 247, 247);
+    background-color: white;
 }
 
 .hover:hover {

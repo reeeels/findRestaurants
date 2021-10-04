@@ -1,10 +1,12 @@
 <% layout('layouts/boilerplate.ejs') %>
 <div class="col-lg-7 col-xs-10 pl-5 pr-5 scroll mt-0 border-left border-grey" style="position: relative; overflow-y: auto;">
     <h1 class="mt-3">Map <span><i class="fa fa-map-marked"></i></span></h1>
-    <div class="mb-3" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; padding: 5px; height: 360px;">
+    <div class="mb-3 border border-dark" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; padding: 5px; height: 360px;border: 3px solid black;">
         <div id="map" class="border border-light" style="height: 100%;"></div>
     </div>
-
+    <button onclick="toggleTheme('dark');">Dark</button>
+    
+    <button onclick="toggleTheme('light');">Light</button>
     <!-- <div class="w-100 d-none d-md-block"></div> -->
     <!-- <blockquote style="box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; padding: 5px; height: 350px;" class="twitter-tweet"><p lang="en" dir="ltr">Nashville is about to get a whole lot more exciting! Check out these highly anticipated restaurant openings for Fall 2021. 😍 <a href="https://t.co/v4BIGYyZVp">https://t.co/v4BIGYyZVp</a></p>&mdash; Nashville Tennessee (@visitmusiccity) <a href="https://twitter.com/visitmusiccity/status/1442927255894691842?ref_src=twsrc%5Etfw">September 28, 2021</a></blockquote> -->
 </div>
@@ -16,7 +18,7 @@
             <% for (let restaurant of restaurants) { %>
                 <% if (restaurant.rating > 4) { %>
                     <hr class="mt-1">
-                    <div class="ml-1 mb-3 px-3 pb-3 pt-1 hover" style="width: 98%; word-wrap: break-word;">
+                    <div class="ml-1 mb-3 px-3 pb-3 pt-1 hover border-left" style="width: 98%; word-wrap: break-word;">
                         <h2 class="mb-1 is-size-2"><a href="<%= restaurant.url %>"><span style="color: black;text-decoration-line: none;"><%= restaurant.name %></span> <span><i class="fa fa-external-link-square-alt"></i></span></a></h2>
                         <h3 class="is-size-5 mt-0"><%= restaurant.alias %></h3>
                         <% let ceiledRating = parseInt(Math.ceil(restaurant.rating))%>

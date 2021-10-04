@@ -6,12 +6,14 @@
     <li class="nav-item mb-0">
       <h4><a class="is-white is-medium is-rounded pl-3 pt-1 pb-1 is-size-4 justify-content-center" style="text-decoration: none;" href="/restaurants"><span class="d-lg-none" style="color: black;"><i class="fa fa-2x fa-search"></i></span><span style="color: black;" class="d-none d-lg-block">Explore</span></a></h4>
     </li>
+    <% if(currentUser) {%>
     <li class="nav-item mb-0">
       <h4><a class="is-white is-medium is-rounded pl-3 pt-1 pb-1 is-size-4 justify-content-center" style="text-decoration: none;" href="#"><span class="d-lg-none" style="color: black;"><i class="fa fa-2x fa-check-circle"></i></span><span style="color: black;" class="d-none d-lg-block">Saved</span></a></h4>
     </li>
     <li class="nav-item justify-content-center border-bottom">
       <h4><a class="is-white is-medium is-rounded pl-3 pt-1 pb-1 is-size-4 justify-content-center" style="text-decoration: none;" href="#"><span class="d-lg-none" style="color: black;"><i class="fa fa-2x fa-user"></i></span><span style="color: black;" class="d-none d-lg-block">Profile</span></a></h4>
     </li>
+    <% } %>
     <br>
       <% if(!currentUser) {%>
         <li class="nav-item">
