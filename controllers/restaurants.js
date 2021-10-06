@@ -5,7 +5,7 @@ const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
 
 module.exports.index = async (req, res) => {
     const restaurants = await Restaurant.find({});
-    res.render('explore', { restaurants })
+    res.render('explore', { restaurants, req })
 }
 
 module.exports.renderNewForm = (req, res) => {

@@ -1,5 +1,5 @@
 <% layout('layouts/boilerplate.ejs') %>
-<div class="col-lg-7 col-xs-10 pl-5 pr-5 scroll mt-0 border-left border-grey" style="position: relative; overflow-y: auto;">
+<div class="col-lg-7 col-xs-10 pl-5 pr-5 scroll mt-0 border-left border-right border-grey" style="position: relative; overflow-y: auto;">
     <h1 class="mt-3">Map <span><i class="fa fa-map-marked"></i></span></h1>
     <div class="mb-3 border border-dark" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; padding: 5px; height: 360px;border: 3px solid black;">
         <div id="map" class="border border-light" style="height: 100%;"></div>
@@ -16,9 +16,9 @@
     <div style="height: 100vh; position: relative; width: 100%; overflow-y: auto;" class="scroll ml-2 mr-2">
         <div class="mt-0">
             <% for (let restaurant of restaurants) { %>
-                <% if (restaurant.rating > 4) { %>
+                <% if (restaurant.rating == 5) { %>
                     <hr class="mt-1">
-                    <div class="ml-1 mb-3 px-3 pb-3 pt-1 hover border-left" style="width: 98%; word-wrap: break-word;">
+                    <div class="ml-1 mb-3 px-3 pb-3 pt-1 hover" style="width: 98%; word-wrap: break-word;">
                         <h2 class="mb-1 is-size-2"><a href="<%= restaurant.url %>"><span style="color: black;text-decoration-line: none;"><%= restaurant.name %></span> <span><i class="fa fa-external-link-square-alt"></i></span></a></h2>
                         <h3 class="is-size-5 mt-0"><%= restaurant.alias %></h3>
                         <% let ceiledRating = parseInt(Math.ceil(restaurant.rating))%>
@@ -55,13 +55,13 @@
                                 <form class='needs-Validation' action="/login" method='POST' novalidate>
                                     <div class="mb-3">
                                         <label class="form-label" for="username">Username</label>
-                                        <input class="form-control" type="text" id="username" name="username" autofocus
+                                        <input class="" type="text" id="username" name="username" autofocus
                                             required>
                                     </div>
         
                                     <div class="mb-3">
-                                        <label class="form-label" for="password">Password</label>
-                                        <input class="form-control" type="password" id="password" name="password" required>
+                                            <label class="form-label" for="password">Password</label>
+                                            <input class="" type="password" id="password" name="password" required>
                                     </div>
                                     <button class="btn btn-success">Login</button>
                                 </form>
@@ -90,19 +90,24 @@
                                 <form class='needs-Validation' action="/signup" method='POST' novalidate>
                                     <div class="mb-1">
                                         <label class="form-label" for="username">Username</label>
-                                        <input class="form-control" type="text" id="username" name="username" autofocus
+                                        <input class="" type="text" id="username" name="username" autofocus
+                                            required>
+                                    </div>
+
+                                    <div class="mb-1">
+                                        <label class="form-label" for="firstname">First Name</label>
+                                        <input class="" type="text" id="firstname" name="firstname" autofocus
                                             required>
                                     </div>
         
                                     <div class="mb-1">
                                         <label class="form-label" for="email">Email</label>
-                                        <input class="form-control" type="email" name="email" id="email" required>
-                                        <div class="valid-feedback">Looks Good</div>
+                                        <input class="" type="email" name="email" id="email" required>
                                     </div>
         
                                     <div class="mb-3">
                                         <label class="form-label" for="password">Password</label>
-                                        <input class="form-control" type="password" id="password" name="password" required>
+                                        <input class="" type="password" id="password" name="password" required>
                                     </div>
                                     <button class="btn btn-success btn-block">Sign Up</button>
                                 </form>

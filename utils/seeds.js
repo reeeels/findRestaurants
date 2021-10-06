@@ -75,7 +75,7 @@
 // });
 
 const mongoose = require('mongoose');
-const Restaurant = require('../models/restaurants');
+const Restaurant = require('../models/restaurant');
 const yelp = require('yelp-fusion');
 
 mongoose.connect('mongodb://localhost:27017/restaurants');
@@ -90,7 +90,7 @@ const apiKey = 'RdIL_KG-iIeNMFev3vZmh2PicEf3Lwy7E1PMFxlYA5iFVSuW8g99jb8B1mD7pk0q
 
 const searchRequest = {
   term:'Restaurants',
-  location: 'Tennessee'
+  location: 'Memphis, Tennessee'
 };
 
 const client = yelp.client(apiKey);
@@ -98,7 +98,6 @@ const client = yelp.client(apiKey);
 client.search(searchRequest).then(response => {
   const res = response.jsonBody.businesses;
   const seedDB = async () => {
-    await Restaurant.deleteMany({});
     for (let i = 0; i < 20; i++) {
       console.log(res[i])
       const restaurant = new Restaurant({
@@ -113,7 +112,13 @@ client.search(searchRequest).then(response => {
         },
         closed: res[i].is_closed,
         rating: res[i].rating,
-        ratingCount: res[i].ratingCount
+        ratingCount: res[i].ratingCount,
+        price: res[i].price,
+        phone: res[i].phone,
+        display_phone: res[i].display_phone,
+        distance: res[i].distance,
+        transactions: res[i].transactions,
+        categories: res[i].categories,
       })
       await restaurant.save();
     }

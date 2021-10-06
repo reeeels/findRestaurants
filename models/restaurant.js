@@ -8,7 +8,7 @@ const RestaurantSchema = new Schema({
     name: String,
     url: String,
     image: String,
-    location: [],
+    location: {},
     geometry: {
         type: {
             type: String,
@@ -21,6 +21,12 @@ const RestaurantSchema = new Schema({
     closed: Boolean,
     rating: Number,
     ratingCount: Number,
+    price: String,
+    phone: String,
+    display_phone: String,
+    distance: Number,
+    transactions: [],
+    categories: [],
 }, opts);
 
 RestaurantSchema.virtual('properties.popUp').get(function () {

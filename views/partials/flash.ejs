@@ -1,15 +1,15 @@
 <% if (success && success.length) {%>
-    <div class="container mt-4">
-        <div class="title text-center" >
-            <h2><%= success %></h2>
+    <div class="container mb-3" style="background-color: rgb(171, 228, 183)">
+        <div class="title text-center"">
+            <h2 style="color: black;font-size: 20px;margin-bottom: 14px;"><%= success %></h2>
         </div>
     </div>
 <% } %>
 
 <% if (error && error.length) {%>
-    <div class="container mt-4"></div>
+    <div class="container mb-3" style="background-color: rgb(233, 188, 188);">
         <div class="title text-center">
-            <h2><%= error %></h2>
+            <h2 style="color: black;font-size: 20px;margin-bottom: 14px;"><%= error %></h2>
         </div>
     </div>
 <% } %>

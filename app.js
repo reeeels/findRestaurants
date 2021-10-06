@@ -152,7 +152,7 @@ app.use('/', userRoutes);
 
 app.get('/home', async (req, res) => {
     const restaurants = await Restaurant.find({});
-    res.render('home.ejs', { restaurants });
+    res.render('home.ejs', { restaurants, req });
 });
 
 app.get('/', (req, res) => {
