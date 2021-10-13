@@ -1,14 +1,22 @@
 <% layout('layouts/boilerplate.ejs') %>
             <div class="col-10">
-                <h1 class="mb-3">Explore</span></h1>
-                <div class="gallery" style="display: flex; overflow: scroll; height: 100vh; position: relative; width: 100%; overflow-y: scroll;">
-                    <% var count = 1; %>
-                    <div> <% for (let restaurant of restaurants) { %>
-                        <figure class=<%= `gallery__item gallery__item--${count}`%>>
-                            <img src=<%= restaurant.image %> class="gallery__img">
-                        </figure>
-                        <% count = count + 1; %>
-                        <% } %>
+
+                <h1 class="mb-3">Explore</h1>
+                <input class="form-control me-2 mx-4 my-4" type="search" placeholder="Search" aria-label="Search">
+                <div class="gallery" style="display: flex; overflow: scroll; height: 100vh;width: 100%; overflow-y: scroll;">
+                    <div class="container">
+                            <div class="row"> <%for (let i = 0; i < restaurants.length; i=i+3) { %>
+                                <div class="col-4">
+                                    <img class="mb-2 mt-2 ml-2" alt="error" style="width:100%" src=<%= restaurants[i].image %>>
+                                </div>
+                                <div class="col-4">
+                                    <img class="mb-2 mt-2 ml-2" alt="error" style="width:100%" src=<%= restaurants[i+1].image %>>
+                                </div>
+                                <div class="col-4">
+                                    <img class="mb-2 mt-2 ml-2" alt="error" style="width:100%" src=<%= restaurants[i+2].image %>>
+                                </div>
+                                <% } %>
+                            </div>
                     </div>
                 </div>
             </div>
