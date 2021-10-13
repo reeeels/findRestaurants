@@ -5,15 +5,9 @@
                 <input class="form-control me-2 mx-4 my-4" type="search" placeholder="Search" aria-label="Search">
                 <div class="gallery" style="display: flex; overflow: scroll; height: 100vh;width: 100%; overflow-y: scroll;">
                     <div class="container">
-                            <div class="row"> <%for (let i = 0; i < restaurants.length; i=i+3) { %>
+                            <div class="row"> <%for (restaurant of restaurants) { %>
                                 <div class="col-4">
-                                    <img class="mb-2 mt-2 ml-2" alt="error" style="width:100%" src=<%= restaurants[i].image %>>
-                                </div>
-                                <div class="col-4">
-                                    <img class="mb-2 mt-2 ml-2" alt="error" style="width:100%" src=<%= restaurants[i+1].image %>>
-                                </div>
-                                <div class="col-4">
-                                    <img class="mb-2 mt-2 ml-2" alt="error" style="width:100%" src=<%= restaurants[i+2].image %>>
+                                    <img class="mb-2 mt-2 ml-2" alt="error" style="width:100%" src=<%= restaurant.image %>>
                                 </div>
                                 <% } %>
                             </div>
