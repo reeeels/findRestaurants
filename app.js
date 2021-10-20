@@ -21,6 +21,8 @@ const Restaurant = require('./models/restaurant');
 const User = require('./models/user');
 const helmet = require('helmet');
 
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/restaurants'
+
 mongoose.connect('mongodb://localhost:27017/restaurants');
 
 const db = mongoose.connection;
@@ -40,7 +42,7 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-const secret = process.env.SECRET;
+const secret = process.env.SECRET || aSecret;
 
 const sessionConfig = {
     name: 'session',
@@ -163,9 +165,9 @@ app.all('*', (req, res, next) => {
     next(new expressError('Page not found', 404))
 })
 
-
-app.listen(3000, () => {
-    console.log('Listening on port 3000')
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Listening on port ${port}`)
 });
 
 
