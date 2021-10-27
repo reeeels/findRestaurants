@@ -1,17 +1,105 @@
 <% layout('layouts/boilerplate.ejs') %>
-            <div class="col-10">
-
-                <h1 class="mb-3">Explore</h1>
-                <input class="form-control me-2 mx-4 my-4" type="search" placeholder="Search" aria-label="Search">
-                <div class="gallery" style="display: flex; overflow: scroll; height: 100vh;width: 100%; overflow-y: scroll;">
-                    <div class="container">
-                            <div class="row"> <%for (restaurant of restaurants) { %>
-                                <div class="col-4">
-                                    <img class="mb-2 mt-2 ml-2" alt="error" style="width:100%" src=<%= restaurant.image %>>
-                                </div>
-                                <% } %>
+<div class="col-10 border-left pl-5 border-grey">
+    <h1 class="mb-3 mt-0">Explore</h1>
+    <input class="form-control me-2 mx-4 my-4" type="search" placeholder="Search" aria-label="Search">
+    <div style="height: 100vh; position: relative; width: 100%; overflow-y: auto;" class="scroll ml-2 mr-2">
+        <div class="mt-0" style="width: 30%;">
+            <div class="ml-3">
+                <div class="container">
+                        <div class="row"> <%for (restaurant of restaurants) { %>
+                            <div class="col-4" style="width: 40%;">
+                                <a href="<%= restaurant.url %>"><img class="mb-2 mt-2 ml-2" class="rounded-5 ml-2 pr-1" style="border-radius: 7%;" alt="error" src=<%= restaurant.image %>></a>
                             </div>
-                    </div>
+                            <!-- <form class="d-inline" action="/restaurants/<%= restaurant._id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-outline-danger">Delete</button>
+                            </form> -->
+                            <% } %>
+                        </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade scroll" id="staticBackdrop" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title" id="staticBackdropLabel">Login</h1>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="justify-content-center align-items-center mt-3">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <form class='needs-Validation' action="/login" method='POST' novalidate>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="username">Username</label>
+                                        <input class="form-control" type="text" id="username" name="username" autofocus
+                                            required>
+                                    </div>
+        
+                                    <div class="mb-3">
+                                            <label class="form-label" for="password">Password</label>
+                                            <input class="form-control" type="password" id="password" name="password" required>
+                                    </div>
+                                    <button class="btn btn-success">Login</button>
+                                </form>
+                            </div>
+                        </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="modal fade scroll" id="signupBackdrop" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title" id="signupBackdropLabel">Signup</h1>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="justify-content-center align-items-center mt-3">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <form class='needs-Validation' action="/signup" method='POST' novalidate>
+                                    <div class="mb-1">
+                                        <label class="form-label" for="username">Username</label>
+                                        <input class="form-control" type="text" id="username" name="username" autofocus
+                                            required>
+                                    </div>
+
+                                    <div class="mb-1">
+                                        <label class="form-label" for="firstname">First Name</label>
+                                        <input class="form-control" type="text" id="firstname" name="firstname" autofocus
+                                            required>
+                                    </div>
+        
+                                    <div class="mb-1">
+                                        <label class="form-label" for="email">Email</label>
+                                        <input class="form-control" type="email" name="email" id="email" required>
+                                    </div>
+        
+                                    <div class="mb-3">
+                                        <label class="form-label" for="password">Password</label>
+                                        <input class="form-control" type="password" id="password" name="password" required>
+                                    </div>
+                                    <button class="btn btn-success btn-block">Sign Up</button>
+                                </form>
+                            </div>
+                        </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
 
