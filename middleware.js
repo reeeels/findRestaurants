@@ -22,15 +22,15 @@ module.exports.validateRestaurant = (req, res, next) => {
     }
 }
 
-module.exports.isAuthor = async (req, res, next) => {
-    const { id } = req.params;
-    const restaurant = await Restaurant.findById(id);
-    console.log(restaurant.author);
-    console.log(req.user._id);
-    if (restaurant.author == req.user._id) {
-        next();
-    } else {
-        req.flash('error', 'You dont have permission');
-        return res.redirect(`/restaurants/${restaurant._id}`);
-    }
-}
+// module.exports.isAuthor = async (req, res, next) => {
+//     const { id } = req.params;
+//     const restaurant = await Restaurant.findById(id);
+//     console.log(restaurant.author);
+//     console.log(req.user._id);
+//     if (restaurant.author == req.user._id) {
+//         next();
+//     } else {
+//         req.flash('error', 'You dont have permission');
+//         return res.redirect(`/restaurants/${restaurant._id}`);
+//     }
+// }

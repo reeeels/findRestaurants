@@ -30,7 +30,7 @@ const RestaurantSchema = new Schema({
 }, opts);
 
 RestaurantSchema.virtual('properties.popUp').get(function () {
-    return `<strong class="link text-center"><a href="/restaurants/${this._id}">${this.name}</a><strong>`
+    return `<strong class="link text-center"><a href="${this.url}">${this.name}</a><strong>`
 });
 
 

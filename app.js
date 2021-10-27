@@ -21,9 +21,9 @@ const Restaurant = require('./models/restaurant');
 const User = require('./models/user');
 const helmet = require('helmet');
 
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/restaurants'
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/restaurants';
 
-mongoose.connect('mongodb://localhost:27017/restaurants');
+mongoose.connect(dbUrl);
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, 'connection error:'));
@@ -42,7 +42,7 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-const secret = process.env.SECRET || aSecret;
+const secret = process.env.SECRET || "aSecret";
 
 const sessionConfig = {
     name: 'session',

@@ -28,11 +28,7 @@ module.exports.createRestaurant = async (req, res, next) => {
 }
 
 module.exports.showRestaurant = async (req, res) => {
-    const restaurant = await Restaurant.findById(req.params.id).populate({
-        populate: {
-            path: 'author'
-        }
-    }).populate('author');
+    const restaurant = await Restaurant.findById(req.params.id);
     console.log(restaurant);
     if (!restaurant) {
         req.flash('error', 'Cannot find that Restaurant');

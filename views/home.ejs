@@ -16,7 +16,7 @@
     <div style="height: 100vh; position: relative; width: 100%; overflow-y: auto;" class="scroll ml-2 mr-2">
         <div class="mt-0">
             <% for (let restaurant of restaurants) { %>
-                <% if (restaurant.rating == 5) { %>
+                <% if (restaurant.rating >= 4) { %>
                     <hr class="mt-1">
                     <div class="ml-1 mb-3 px-3 pb-3 pt-1 hover" style="width: 98%; word-wrap: break-word;">
                         <h2 class="mb-1 is-size-2"><a href="<%= restaurant.url %>"><span style="color: black;text-decoration-line: none;"><%= restaurant.name %></span> <span><i class="fa fa-external-link-square-alt"></i></span></a></h2>
