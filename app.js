@@ -152,14 +152,14 @@ app.use((req, res, next) => {
 app.use('/restaurants', restaurantsRoutes);
 app.use('/', userRoutes);
 
+app.get('/', (req, res) => {
+    res.render('index');
+})
+
 app.get('/home', async (req, res) => {
     const restaurants = await Restaurant.find({});
     res.render('home.ejs', { restaurants, req });
 });
-
-app.get('/', (req, res) => {
-    res.render('index');
-})
 
 app.all('*', (req, res, next) => {
     next(new expressError('Page not found', 404))
