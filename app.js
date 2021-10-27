@@ -157,7 +157,7 @@ app.get('/home', async (req, res) => {
     res.render('home.ejs', { restaurants, req });
 });
 
-app.get('/', (req, res) => {
+app.get('/h', (req, res) => {
     res.render('index');
 })
 
